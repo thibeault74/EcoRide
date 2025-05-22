@@ -1,0 +1,122 @@
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Oculta el desbordamiento horizontal en la página */
+}
+
+body {
+    background-image: url('../imagenes/fondoWEB.webp');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-y: auto; 
+}
+
+.containerForm form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 700px; /* Evita que se extienda demasiado en pantallas grandes */
+    margin: 0 auto; /* Centra horizontalmente */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.containerForm label {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.containerForm input[type="text"],
+.containerForm input[type="number"],
+.containerForm input[type="email"], 
+.containerForm input[type="password"],
+.containerForm input[type="date"], 
+.containerForm input[type="tel"],
+.containerForm textarea,
+.containerForm select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    background-color: #f9f9f9;
+    position: relative;
+    color: #333;
+}
+
+
+.containerForm button {
+    margin-left: 120px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1.3rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 50%; /* Asegura que el botón no se desborde */
+}
+
+.containerForm button:hover {
+    background-color: #218838;
+}
+
+.containerForm p {
+    font-size: 1.5rem;
+    color: #000000;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.containerForm i {
+    color: #0024D3;
+    cursor: pointer;
+    margin-left: 10px;
+    position: relative;
+    top: -25px;
+    left: 90%;
+    transform: translateY(-20%);
+}
+
+#listaOrigen,
+#listaDestino {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 15%; /* se adapta al input */
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: sans-serif;
+}
+
+#listaOrigen li,
+#listaDestino li {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#listaOrigen li:hover,
+#listaDestino li:hover {
+    background-color: #f0f0f0;
+}

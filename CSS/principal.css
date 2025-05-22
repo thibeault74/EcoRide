@@ -1,0 +1,628 @@
+@font-face {
+    font-family: 'Sketchy';
+    src: url('../fonts/Sketchy-1jX4.woff') format('woff');
+
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+h1, h2, h3, title {
+    font-family: 'Sketchy', sans-serif;
+}
+
+p {
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background-image: url('../imagenes/fondoWEB.webp'); 
+    background-repeat: repeat; 
+    background-size: auto;
+    background-attachment: fixed;
+  }
+
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen se ajuste */
+}
+
+
+
+@media (max-width: 999px) {
+
+    body {
+        width: 100%;
+        background-attachment: fixed;
+    }
+
+    .responsive-image {
+        padding-top: 60px;
+        /*margin-top: 50px;*/
+        height: auto;
+        width: 100%;
+        z-index:1;
+    }
+
+    .overlay-text {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-size: 1.1rem;
+        font-family: 'Sketchy', sans-serif;
+        text-align: center;
+        text-shadow: 5px 5px 15px rgb(18, 182, 26);
+        white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+        overflow: hidden; /* Oculta el texto que no cabe */
+        border-right: 16px solid rgb(148, 216, 174); /* Simula el cursor de escritura */
+        width: 0; /* Inicialmente oculta todo el texto */
+        animation: typing 4s steps(30, end) forwards, blink 0.5s step-end infinite;
+    }
+    
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%; /* Ajusta el texto completo */
+        }
+    }
+    
+    @keyframes blink {
+        from, to {
+            border-color: transparent;
+        }
+        50% {
+            border-color: white;
+        }
+    }
+
+    .mobile-text-container {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .text-box1{
+        z-index: 2;
+    }
+    .text-box1, .text-box2, .text-box3, 
+    .text-box4, .text-box5, .text-box6, 
+    .text-box7, .text-box8, .text-box9, 
+    .text-box11 {
+        background-color: lightblue;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .text-box1 img, .text-box2 img, .text-box3 img,
+    .text-box4 img, .text-box5 img, .text-box6 img,
+    .text-box7 img, .text-box8 img, .text-box9 img,
+    .text-box11 img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
+    p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #555;
+        margin-bottom: 15px;
+    }
+    
+    .btn {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        margin: 0%;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Estilos para el carrusel */
+    .grup {
+        position: relative;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 20px 10px;
+        margin-top: 30px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .grup h1 {
+        font-size: 1.8rem;
+        color: white;
+        margin-bottom: 10px;
+    }
+    
+    .grup p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        color: #eee;
+    }
+    
+    /* Contenedor del carrusel */
+    .carousel-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        margin: 0 auto;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 20px;
+    }
+    
+    /* Contenedor de tarjetas */
+    .card-container {
+        display: flex;
+        gap: 15px;
+        padding: 10px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+    
+    /* Ocultar scrollbar */
+    .card-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Estilos de las tarjetas */
+    .card {
+        min-width: 85%; /* Ocupa casi todo el ancho en móvil */
+        height: 220px;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    
+    .card:active {
+        transform: scale(0.98); /* Efecto de presionado */
+    }
+    
+    .card-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+    }
+    
+    .card.flipped .card-inner {
+        transform: rotateY(180deg);
+    }
+    
+    .card-front,
+    .card-back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    
+    .card-front {
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+    }
+    
+    .card-front img {
+        width: 100%;
+        height: 120px;
+        border-radius: 5px;
+        object-fit: cover;
+    }
+    
+    .card-back {
+        background-color: #3498db;
+        color: white;
+        transform: rotateY(180deg);
+        font-size: 0.9rem;
+        overflow-y: auto; /* Permite scroll si el contenido es largo */
+    }
+    
+    /* Botones de navegación */
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(36, 119, 19, 0.8);
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+    }
+    
+    .prev {
+        left: 5px;
+    }
+    
+    .next {
+        right: 5px;
+    }
+}
+
+
+
+/* Ajustes para tabletas */
+@media (min-width: 1000px) {
+    .responsive-image {
+        width: 100%;
+        height: auto;
+    }
+    .overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-size: 3rem;
+        font-family: 'Sketchy', sans-serif;
+        text-align: center;
+        text-shadow: 5px 5px 15px rgba(59, 116, 223, 1.0);
+        white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+        overflow: hidden; /* Oculta el texto que no cabe */
+        border-right: 16px solid lightblue; /* Simula el cursor de escritura */
+        width: 0; /* Inicialmente oculta todo el texto */
+        animation: typing 4s steps(30, end) forwards, blink 0.5s step-end infinite;
+    }
+    
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%; /* Ajusta el texto completo */
+        }
+    }
+    
+    @keyframes blink {
+        from, to {
+            border-color: transparent;
+        }
+        50% {
+            border-color: white;
+        }
+    }
+
+/*---------------------estilo para el boton-------------------------------*/
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/*---------------------estilo para los text box-------------------------------*/
+body {
+    width: 100%;
+}
+
+.imagen2 {
+    width: 70%;
+    height: 70%;
+}
+
+.text-box1 {
+    position: relative;
+    top: 200px;
+    width: 40%;
+    padding: 30px;
+    text-align: center;
+    background-color: lightblue;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    transform:translateX(10%);
+    box-shadow: black 0px 0px 20px;
+
+}
+
+.text-box2 {
+    position: relative;
+    top: 400px;
+    width: 40%;
+    padding: 30px;
+    text-align: center;
+    background-color: lightblue;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    transform: translateX(120%);
+    will-change: transform;
+    box-shadow: black 0px 0px 20px;
+
+}
+/*------------------------------todo-----------------------------------*/
+.text-box3 {
+    position: relative;
+    top: 600px;
+    /*Centradoverticalinicial*/margin: 0 auto;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    background-color: lightblue;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    transform: translateX(-40%);
+    will-change: transform;
+    box-shadow: black 0px 0px 20px;
+}
+
+.text-box4 {
+    position: relative;
+    top: 800px; /* Centrado vertical inicial */
+    margin: 0 auto;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    background-color: lightblue;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    transform: translateX(-100%); /* Comienza más cerca */
+    will-change: transform; /* Optimiza las animaciones */
+    box-shadow: black 0px 0px 20px;
+}
+
+
+.text-box5 {
+    position: relative;
+    top: 1000px; /* Centrado vertical inicial */
+    margin: 0 auto;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    background-color: lightblue;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    transform: translateX(-100%); /* Comienza más cerca */
+    will-change: transform; /* Optimiza las animaciones */
+    box-shadow: black 0px 0px 20px;
+}
+
+.text-box6 {
+    position: relative;
+    top: 1200px; /* Centrado vertical inicial */
+    margin: 0 auto;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    background-color: lightblue;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    transform: translateX(-100%); /* Comienza más cerca */
+    will-change: transform; /* Optimiza las animaciones */
+    box-shadow: black 0px 0px 20px;
+}
+
+.text-box7 {
+    position: relative;
+    top: 1400px; /* Centrado vertical inicial */
+    margin: 0 auto;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    background-color: lightblue;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    transform: translateX(-100%); /* Comienza más cerca */
+    will-change: transform; /* Optimiza las animaciones */
+    box-shadow: black 0px 0px 20px;
+}
+
+.text-box8 {
+    position: relative;
+    top: 1600px; /* Centrado vertical inicial */
+    margin: 0 auto;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    background-color: lightblue;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    transform: translateX(-100%); /* Comienza más cerca */
+    will-change: transform; /* Optimiza las animaciones */
+    box-shadow: black 0px 0px 20px;
+}
+
+.text-box9 {
+    position: relative;
+    top: 1800px; /* Centrado vertical inicial */
+    margin: 0 auto;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    background-color: lightblue;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    transform: translateX(-100%); /* Comienza más cerca */
+    will-change: transform; /* Optimiza las animaciones */
+    box-shadow: black 0px 0px 20px;
+}
+
+.text-box11 {
+    position: relative;
+    top: 2300px; /* Centrado vertical inicial */
+    margin: 0 auto;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    background-color: lightblue;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    transform: translateX(-100%); /* Comienza más cerca */
+    will-change: transform; /* Optimiza las animaciones */
+    box-shadow: black 0px 0px 20px;
+}
+
+/*---------------------estilo para la tarjetas-------------------------------*/
+
+.grup{
+    position: relative;
+    top: 2600px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+.carousel-wrapper {
+    
+    width: 700px;
+    overflow: hidden;
+
+    margin: auto;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.7) 10px 30px 40px;
+}
+
+.card-container {
+
+    display: flex; /* Cambio de grid a flex */
+    gap: 40px;
+    padding: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    /*scrollbar-width: none; /* Oculta barra en Firefox 
+    -ms-overflow-style: none;  Oculta barra en Edge */
+}
+
+.card-container::-webkit-scrollbar {
+    display: none; /* Oculta en Chrome/Safari */
+}
+
+.card {
+    min-width: 200px; /* Tamaño fijo para cada tarjeta */
+    height: 250px;
+    flex-shrink: 0; /* No se achican */
+    scroll-snap-align: start;
+    cursor: pointer;
+    transition: box-shadow 0.6s ease-in-out;
+
+}
+
+.card:hover {
+    box-shadow: none; /* La sombra desaparece al hacer hover (cuando gira) */
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.card-front {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.7) 10px 30px 40px;
+    transition: box-shadow 0.2s ease-in-out; /* Transición para desaparecer sombra */
+}
+
+.card:hover .card-front {
+    box-shadow: none; /* La sombra desaparece cuando la tarjeta gira */
+}
+
+.card-front img {
+    width: 100%;
+    height: 140px;
+    border-radius: 10px;
+}
+
+.card-back {
+    background-color: #3498db;
+    color: white;
+    transform: rotateY(180deg);
+    box-shadow: rgba(0, 0, 0, 0.7) 10px 30px 40px;
+    transition: box-shadow 0.2s ease-in-out;
+}
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(36, 119, 19, 0.8);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+}
+

@@ -1,0 +1,97 @@
+#buscador {
+    width: 100%; /* Ocupará todo el ancho disponible */
+    max-width: 400px; /* Máximo ancho para evitar que se vea muy grande */
+    padding: 10px 15px;
+    margin: 20px auto; /* Centrar horizontalmente */
+    display: block;
+    font-size: 16px;
+    border: 2px solid #007BFF; /* Color azul corporativo */
+    border-radius: 25px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#buscador:focus {
+    border-color: #0056b3; /* Un azul más oscuro al enfocar */
+    box-shadow: 0 0 10px rgba(0, 91, 187, 0.5);
+}
+
+/* Contenedor del input para mejor alineación */
+.buscador-container {
+    text-align: center; /* Centra el buscador */
+    margin-bottom: 20px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columnas de igual tamaño */
+    gap: 20px; /* Espaciado entre tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    padding: 20px;
+}
+
+.card {
+    margin: 20px;
+    width: 200px;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
+    transition: box-shadow 0.6s ease-in-out; /* Agregamos transición para suavizar */
+    box-shadow: rgba(0, 0, 0, 0.7) 10px 30px 40px;
+}
+
+.card:hover {
+    box-shadow: none; /* La sombra desaparece al hacer hover (cuando gira) */
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.card-front {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.7) 10px 30px 40px;
+    transition: box-shadow 0.2s ease-in-out; /* Transición para desaparecer sombra */
+}
+
+.card:hover .card-front {
+    box-shadow: none; /* La sombra desaparece cuando la tarjeta gira */
+}
+
+.card-front img {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.card-back {
+    background-color: #5BC2BC;
+    color: white;
+    transform: rotateY(180deg);
+    box-shadow: rgba(0, 0, 0, 0.7) 10px 30px 40px;
+    transition: box-shadow 0.2s ease-in-out;
+}

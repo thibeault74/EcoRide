@@ -1,0 +1,175 @@
+<style>
+    body {
+    margin-top: 5%;
+    background-image: url('./imagenes/fondoWEB.webp');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    }
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid #212738;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #588157;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+    border: 1px solid #212738;
+    text-align: center;
+    padding: 12px;
+    }
+
+    th {
+    background-color: #3A5A40;
+    color: white;
+    font-weight: bold;
+    }
+
+    /*td{
+    background-color: #CACD75;
+    }*/
+
+    tr:nth-child(even) {
+    background-color: #658D38; /* Alterna los colores para las filas pares */
+    }
+
+    tr:hover {
+    background-color: #FF695F; /* Resalta la fila al pasar el mouse */
+    transition: background-color 0.3s ease;
+    }
+
+    /* Enlaces dentro de las celdas */
+    td a {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    td a:hover {
+    text-decoration: underline;
+    color: #388E3C;
+    }
+
+    /* Mensaje cuando no hay registros */
+    .no-records {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    background-color: #f2f2f2;
+    padding: 20px;
+    }
+
+    /* Botones de acción */
+    td a.modifier {
+    background-color: #1976D2; /* Azul */
+    color: white;
+    border: 1px solid #1976D2;
+    }
+
+    td a.modifier:hover {
+    background-color: #0D47A1; /* Azul oscuro */
+    border-color: #0D47A1;
+    }
+
+    td a.supprimer {
+    background-color: #D32F2F; /* Rojo */
+    color: white;
+    border: 1px solid #D32F2F;
+    }
+
+    td a.supprimer:hover {
+    background-color: #B71C1C; /* Rojo oscuro */
+    border-color: #B71C1C;
+    }
+</style>
+<body>
+    <h1>Liste des utilisateurs</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Prenom </th>
+                <th>Nom</th>
+                <th>Date de naissance</th>
+                <th>telephone</th>
+                <th>adresse</th>
+                <th>Photo</th>
+                <th>email</th>
+                <th>niveau</th>
+                <th>confirmé</th>
+                <th>actif</th>
+                <th>Modificar/Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+            require_once './inc/conexion.php';
+
+            $sql = "SELECT * FROM usuarios";
+            $result = $conexion->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row["id"] . "</td>";
+                    echo "<td>" . $row["nombre"] . "</td>";
+                    echo "<td>" . $row["apellidoPat"] . "</td>";
+                    echo "<td>" . $row["fechaNac"] . "</td>";
+                    echo "<td>" . $row["telephone"] . "</td>";
+                    echo "<td>" . $row["adresse"] . "</td>";
+                    echo "<td><img src='vistas/ver_imagen.php?id=" . $row['id'] . "' alt='Foto' style='width:50px;height:50px;object-fit:cover;border-radius:5px;'></td>";
+                    echo "<td>" . $row["email"] . "</td>";
+                    if ($row["level2"] == 1) {
+                        $row["level2"] = "Utilisateur";
+                    } elseif ($row["level2"] == 2) {
+                        $row["level2"] = "Conducteur";
+                    } elseif ($row["level2"] == 3) {
+                        $row["level2"] = "Employé";
+                    }elseif ($row["level2"] == 4) {
+                        $row["level2"] = "Administrateur";
+                    }
+                    echo "<td>" . $row["level2"] . "</td>";
+                    if ($row["confirmado"] == 1) {
+                        $row["confirmado"] = "Oui";
+                    } else {
+                        $row["confirmado"] = "Non";
+                    }
+                    echo "<td>" . $row["confirmado"] . "</td>";
+                    if ($row["activo"] == 1) {
+                        $row["activo"] = "Oui";
+                    } else {
+                        $row["activo"] = "Non";
+                    }
+                    echo "<td>" . $row["activo"] . "</td>";
+                    echo "<td>";
+                    echo "<a class='modifier''" . ($pagina == 'editar_usuarios' ? 'active' : '') . "' href='index.php?p=/editar_usuarios&id=" . $row['id'] . "'>Modificar</a> | ";
+                    echo "<a class='supprimer''" . ($pagina == 'eliminar_usuarios' ? 'active' : '') . "' href='index.php?p=/eliminar_usuarios&?id=" . $row['id'] . "' onclick='return confirmarEliminacion()'>Eliminar</a>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td class='no-records' colspan='29'>Aucun enregistrement trouvé.</td></tr>";
+            }
+
+            $conexion->close();
+            ?>
+        </tbody>
+    </table>
+    <script>
+        function confirmarEliminacion() {
+            return confirm("Êtes-vous sûr de vouloir supprimer ce véhic ?");
+        }
+    </script>
+    <br>
+</body>
