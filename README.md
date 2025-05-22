@@ -33,7 +33,7 @@ Prérequis
 1. Cloner ce dépôt :
 
 ```bash
-git clone https://github.com/votre-utilisateur/ecoride.git
+git clone https://github.com/thibeault74/EcoRide.git
 
 copier le projet dans le dossier www de Laragon.
 
